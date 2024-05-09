@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categoria;
+use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignPermission('admin');
 
-        Categoria::factory(10)->create();
+        Product::factory(10)->create();
     }
 }

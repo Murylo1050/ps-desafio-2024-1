@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
 use App\Models\Categoria;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoriaController extends Controller
 {
@@ -22,7 +23,7 @@ class CategoriaController extends Controller
     {
         $categoria = $this->categoria->all();
 
-        return response()->json($categoria);
+        return response()->json($categoria, Response::HTTP_OK);
     }
 
     /**
@@ -33,7 +34,7 @@ class CategoriaController extends Controller
         $data = $request->validated();
         $categoria = $this->categoria->create($data);
 
-        return response()->json($categoria);
+        return response()->json($categoria, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,7 +44,7 @@ class CategoriaController extends Controller
     {
         $categoria = $this->categoria->findOrFail($id);
 
-        return response()->json($categoria);
+        return response()->json($categoria, Response::HTTP_OK);
 
     }
 
@@ -56,7 +57,7 @@ class CategoriaController extends Controller
         $categoria = $this->categoria->findOrFail($id);
         $categoria->update($data);
 
-        return response()->json($categoria);
+        return response()->json($categoria, Response::HTTP_OK);
     }
 
     /**
@@ -67,6 +68,6 @@ class CategoriaController extends Controller
         $categoria = $this->categoria->findOrFail($id);
         $categoria->delete();
 
-        return response()->json(['message' => 'A categoria foi excluida com sucesso']);
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
