@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,5 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
         $user->assignPermission('admin');
+
+        Categoria::factory(10)->create();
     }
 }

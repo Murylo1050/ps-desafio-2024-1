@@ -30,7 +30,7 @@ class CategoriaController extends Controller
      */
     public function store(StoreCategoriaRequest $request)
     {
-        $data = $request()->validated();
+        $data = $request->validated();
         $categoria = $this->categoria->create($data);
 
         return response()->json($categoria);
@@ -39,24 +39,34 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
+    public function show(string $id)
     {
-        //
+        $categoria = $this->categoria->findOrFail($id);
+
+        return response()->json($categoria);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
+    public function update(UpdateCategoriaRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $categoria = $this->categoria->findOrFail($id);
+        $categoria->update($data);
+
+        return response()->json($categoria);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(string $id)
     {
-        //
+        $categoria = $this->categoria->findOrFail($id);
+        $categoria->delete();
+
+        return response()->json(['message' => 'A categoria foi excluida com sucesso']);
     }
 }
