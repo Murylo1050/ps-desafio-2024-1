@@ -14,12 +14,13 @@ import { LuInfo, LuPen, LuTrash } from 'react-icons/lu'
 import { DialogUpdateProduct } from './dialog-update-product'
 import { DialogProductDelete } from './dialog-delete-product'
 import { DialogInformationProduct } from './dialog-information-product'
+import { api } from '@/services/api'
 
 export default async function ListProduct() {
   let products: productType[]
 
   try {
-    products = null // requisição para a api
+    products = await api.get('/products') // requisição para a api
   } catch (e) {
     return (
       <DashboardContainer className="text-destructive">

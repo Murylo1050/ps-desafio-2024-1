@@ -13,12 +13,13 @@ import { LuInfo, LuPen, LuTrash } from 'react-icons/lu'
 import { DialogUpdateCategory } from './dialog-update-category'
 import { DialogCategoryDelete } from './dialog-delete-category'
 import { DialogInformationCategory } from './dialog-information-category'
+import { api } from '@/services/api'
 
 export default async function ListCategories() {
   let categories: categoryType[]
 
   try {
-    categories = null // requisição para a api
+    categories = await api.get('/categories') // requisição para a api
   } catch (e) {
     return (
       <DashboardContainer className="text-destructive">
