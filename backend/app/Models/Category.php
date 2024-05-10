@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Category extends Model
 {
     use HasFactory, HasUuids;
 
@@ -22,7 +22,7 @@ class Categoria extends Model
     public static function booted()
     {
 
-        self::deleting(function (Categoria $categoria) {
+        self::deleting(function (Category $categoria) {
             $categoria->products()->each(function ($product) {
                 $product->delete();
             });

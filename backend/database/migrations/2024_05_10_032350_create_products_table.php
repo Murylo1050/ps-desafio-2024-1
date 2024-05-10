@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float('price', 2);
             $table->integer('amount', false, true);
             $table->string('image');
-            $table->foreignUuid('category_id')->references('id')->on('categorias');
+            $table->foreignUuid('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

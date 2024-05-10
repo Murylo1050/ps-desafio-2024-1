@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCategoriaRequest;
-use App\Http\Requests\UpdateCategoriaRequest;
-use App\Models\Categoria;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Category;
 use Symfony\Component\HttpFoundation\Response;
 
-class CategoriaController extends Controller
+class CategoryController extends Controller
 {
-    private Categoria $categoria;
+    private Category $categoria;
 
-    public function __construct(Categoria $categoria)
+    public function __construct(Category $categoria)
     {
         $this->categoria = $categoria;
     }
@@ -29,7 +29,7 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoriaRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         $data = $request->validated();
         $categoria = $this->categoria->create($data);
@@ -51,7 +51,7 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriaRequest $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
         $data = $request->validated();
         $categoria = $this->categoria->findOrFail($id);
