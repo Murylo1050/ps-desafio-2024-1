@@ -18,4 +18,14 @@ class Categoria extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public static function booted()
+    {
+
+        self::deleting(function (Categoria $categoria) {
+            $categoria->products()->each(function ($product) {
+                $product->delete();
+            });
+        });
+    }
 }

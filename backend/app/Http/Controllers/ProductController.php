@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class ProductController extends Controller
 {
@@ -58,16 +60,38 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $product = $this->product->findOrFail($id);
+        if ($request->hasFile('image')) {
+            try {
+
+                $image_name = explode('products/', $product['image']);
+                Storage::disk('public')->delete('products/'.$image_name[1]);
+
+            } catch (Throwable) {
+            } finally {
+
+                $path = $request->file('image')->store('products', 'public');
+                $data['image'] = url('storage/'.$path);
+
+            }
+        }
+        $product->update($data);
+        $product_category = $product->with('category')->findOrFail($id);
+
+        return response()->json($product_category, Response::HTTP_CREATED);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(string $id)
     {
-        //
+        $product = $this->product->findOrFail($id);
+        $product->delete();
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
