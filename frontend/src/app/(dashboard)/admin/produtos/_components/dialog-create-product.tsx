@@ -32,6 +32,7 @@ export function DialogCreateProduct({ children }: DialogCreateProductProps) {
 
   const submit = async (form: FormData) => {
     setError(null)
+
     const newForm = await filterFormData(form)
 
     const response = await createProduct(newForm)

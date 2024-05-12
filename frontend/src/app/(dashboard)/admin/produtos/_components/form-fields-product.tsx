@@ -16,7 +16,6 @@ import { productType } from '@/types/product'
 import { categoryType } from '@/types/category'
 import { useEffect, useState } from 'react'
 import { useFormStatus } from 'react-dom'
-import { read } from 'node:fs'
 import { DashboardContainer } from '@/components/dashboard/dashboard-items'
 import {
   Select,
@@ -27,7 +26,6 @@ import {
   SelectItem,
   SelectLabel,
 } from '@/components/select'
-import { SelectTriggerProps } from '@radix-ui/react-select'
 
 interface FormFieldsProductProps {
   product?: productType
@@ -46,7 +44,7 @@ export default function FormFieldsProduct({
 
   const requestData = async () => {
     try {
-      const response: productType[] = await api.get('/products')
+      const response: productType[] = await api.get('/categories')
       setCategory(response)
     } catch (e) {
       return (
@@ -126,11 +124,11 @@ export default function FormFieldsProduct({
             <SelectContent id="category_id">
               <SelectGroup id="category_id">
                 <SelectLabel>Categorias</SelectLabel>
-                {categories?.map((category: categoryType, index: number) => {
-                  ;<SelectItem value={category.id} key={index}>
-                    category.name
-                  </SelectItem>
-                })}
+                {categories?.map((category: categoryType, index: number) => [
+                  <SelectItem value={category.id} key={index}>
+                    {category.name}
+                  </SelectItem>,
+                ])}
               </SelectGroup>
             </SelectContent>
           </Select>

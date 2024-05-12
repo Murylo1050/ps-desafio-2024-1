@@ -14,8 +14,9 @@ export async function createProduct(form: FormData) {
 
 export async function updateProduct(form: FormData) {
   try {
-    await api.post(`/products/${form.get('id')}`)
+    await api.post(`/products/${form.get('id')}`, form)
   } catch (e) {
+    console.log('ta dando erro aqui!!!')
     return JSON.stringify(e)
   }
   revalidatePath('/admin/produtos')
