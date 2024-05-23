@@ -1,0 +1,34 @@
+.card {
+    background: white;
+    color: #000;
+    box-shadow: 0 4px 3px #999;
+
+    border-radius: 10px;
+    height: fit-content;
+    min-height: 15vh;
+    min-width: 16rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.card_img {
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    width: 100%;
+    height: 12rem;
+}
+
+.card_body {
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    top: -4px;
+    box-shadow: 3px 3px 7px 3px rgba(0, 0, 0, 0.4);
+}

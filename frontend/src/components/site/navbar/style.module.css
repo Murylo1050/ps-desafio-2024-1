@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.navbar {
+    background: #f60032;
+    height: 60px;
+    border-bottom: 1.5px solid gray;
+    z-index: 1000;
+    box-shadow: 0 2px 6px 1px;
+}
+
+.navbar_nav {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1vw;
+}
+
+.nav_links {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+
+.dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    display: none;
+    border-radius: 10px;
+    width: max-content;
+
+}
+
+
+.dropdown_item {
+    padding-left: 5px;
+    padding-top: 5px;
+    font-family: "Raleway", serif;
+    font-weight: 600;
+    font-style: normal;
+    color: black;
+    display: block;
+    width: auto;
+}
+
+.dropdown_item:hover {
+    background: rgb(201, 201, 201);
+}
+
+.nav_item:hover ul, .nav_item.over ul {
+    display: block;
+}
+
+.logo {
+    position: absolute;
+    left: 1vw;
+    top: 5px;
+    height: 50px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.nav_item {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    margin: auto 15px auto 25px;
+    position: relative;
+}
+
+.nav_item > a {
+    border-bottom: darkblue;
+    border-radius: 0px;
+    display: block;
+    font-size: 18px;
+    color: #FFF;
+    transition: all 0.125s ease;
+}
+
+.nav_item:hover > a {
+    border-bottom: 2px solid #FFF;
+    border-radius: 2px;
+}
+
+
