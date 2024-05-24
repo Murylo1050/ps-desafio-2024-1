@@ -81,7 +81,7 @@ class ProductController extends Controller
         $product->update($data);
         $product_category = $product->with('category')->findOrFail($id);
 
-        return response()->json($product_category, Response::HTTP_CREATED);
+        return response()->json($product_category, Response::HTTP_OK);
     }
 
     /**
@@ -93,5 +93,13 @@ class ProductController extends Controller
         $product->delete();
 
         return response()->json([], Response::HTTP_NO_CONTENT);
+    }
+
+    public function buy(string $id)
+    {
+        $product = $this->product->findOrFail($id);
+        $product->update(['amount' => $product['amount'] - 1]);
+
+        return response()->json($product, Response::HTTP_OK);
     }
 }

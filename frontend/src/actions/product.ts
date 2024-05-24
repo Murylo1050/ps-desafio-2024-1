@@ -26,3 +26,7 @@ export async function destroyProduct(id: string) {
   await api.delete(`/products/${id}`)
   revalidatePath('/admin/produtos')
 }
+
+export async function buyProduct(id: string) {
+  await api.post(`/buy/${id}`)
+}

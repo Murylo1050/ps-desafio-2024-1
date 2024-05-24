@@ -21,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     requestData()
   }, [])
+
   return (
     <div className={style.productPage}>
       <Navbar logo="/images/logoAdapti.png" />
