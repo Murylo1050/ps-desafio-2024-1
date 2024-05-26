@@ -33,9 +33,38 @@
     box-shadow: 3px 3px 7px 3px rgba(0, 0, 0, 0.4);
 }
 
-.button, .soldOut {
+.button,
+.soldOut {
     border-top: 1px solid black;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
+@media screen and (max-width: 660px) {
+    .card {
+        flex-direction: row;
+        width: 90vw;
+        height: fit-content;
+        max-height: 160px;
+        min-height: 100px;
+        font-size: 1.2rem;
+    }
+
+    .card_img {
+        max-width: 35vw;
+        border-radius: 10px 0 0 10px;
+        height: auto;
+    }
+
+    .card_body {
+        justify-content: center;
+    }
+
+
+}
+
+@media screen and (max-width: 500px) {
+    .card {
+        font-size: 1rem;
+    }
+}

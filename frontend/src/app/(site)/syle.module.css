@@ -19,9 +19,78 @@
 }
 
 .wrapper {
-    margin-top: 1rem;
+    margin: 1rem;
     display: grid;
     gap: 1.2rem;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 18rem));
     justify-content: center;
+}
+
+.filter_div {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    height: 2rem;
+}
+
+.filter_input_text {
+    margin-right: 1px;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 25rem;
+    box-shadow: 2px 2px 3px #999;
+    font-family: "Raleway", serif;
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+.filter_select {
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #999;
+    color: black;
+    width: 100%;
+    max-width: 9rem;
+
+
+}
+
+
+.option {
+    font-family: "Raleway", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+@media screen and (max-width: 935px) {
+    .filter_input_text {
+        max-width: 20rem;
+    }
+
+    .filter_select {
+        max-width: 7rem;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .filter_input_text {
+        max-width: 14rem;
+    }
+
+
+}
+
+@media screen and (max-width: 440px) {
+    .filter_input_text {
+        max-width: 12rem;
+    }
+
+
 }
